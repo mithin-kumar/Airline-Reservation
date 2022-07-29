@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>ARS</title>
+
+</head>
+<body>
+  <h1>FLIGHTS</h1>
+  <h3>
+      {% for  flight in flights  %}
+
+      <li><a href="{%  url 'flight' flight.id %}">
+          {{ flight.id }} {{ flight.origin }} to  {{ flight.destination }}
+          </a>
+      </li>
+      {% endfor %}
+  </h3>
+</body>
+</html>
