@@ -6,14 +6,22 @@
 </head>
 <body>
   <h1>FLIGHTS</h1>
-  <h3>
-      {% for  flight in flights  %}
+   <form action="{% url  'search'  %}" method="post">
+         {% csrf_token  %}
+       <h1>Origin :</h1>
+       <select name="origin"  id="s" >
+           {% for Airport in Airports %}
+           <option value="{{ Airport.id }}">{{ Airport.city }}</option>
+           {% endfor %}
+       </select>
+       <h1>Destination :</h1>
+       <select name="destination"  id="" >
+           {% for Airport in Airports %}
+           <option value="{{ Airport.id }}">{{ Airport.city }}</option>
+           {% endfor %}
+       </select>
+       <input type="submit">
+     </form>
 
-      <li><a href="{%  url 'flight' flight.id %}">
-          {{ flight.id }} {{ flight.origin }} to  {{ flight.destination }}
-          </a>
-      </li>
-      {% endfor %}
-  </h3>
 </body>
 </html>

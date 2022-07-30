@@ -22,13 +22,12 @@
      <h1>ADD Passenger</h1>
      <form action="{% url 'book' flight.id %}" method="post">
          {% csrf_token  %}
-         <input type="number" name="passenger_id" placeholder="id">
          <input type="text" name="passenger_sex" placeholder="sex">
          <input type="text" name="passenger_name" placeholder="name">
          <input type="number" name="passenger_age" placeholder="age">
          <input type="submit">
      </form>
 
-  <a href="{% url 'index' %}">flights list</a>
+  <a href="{% url 'flight/index' %}">flights list</a>
 </body>
 </html>
