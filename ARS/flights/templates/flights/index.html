@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <title>ARS</title>
 
+    <title>ARS</title>
 </head>
 <body>
+
   <h1>FLIGHTS</h1>
+
    <form action="{% url  'search'  %}" method="post">
          {% csrf_token  %}
        <h1>Origin :</h1>
@@ -22,6 +24,7 @@
        </select>
        <input type="submit">
      </form>
+     <a href="{%  url 'logout' %}">logout</a>
 
 </body>
 </html>
