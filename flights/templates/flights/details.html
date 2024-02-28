@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Details</title>
+    <style>
+
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            /* Background color */
+            background-color: #f0f0f0;
+            /* Background image */
+            background-image: url('./flight.jpg');
+            background-size: cover; /* Adjust as needed */
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 30%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <nav background-image="./flight.jpg"> <h1>Flight {{ flight.id }}</h1></nav>
+   <!-- <h1>Flight {{ flight.id }}</h1> -->
+   <ul>
+       <li>Origin: {{ flight.origin }}</li>
+       <li>Destination: {{ flight.destination }}</li>
+       <li>Duration: {{ flight.duration }}</li>
+       <li>Seats Available: {{ flight.seat_available }}</li>
+   </ul>
+    <h2>Passengers</h2>
+    <ol>
+        {% for passenger in passengers %}
+        <li>Name: {{ passenger }} Id- {{ passenger.id }}</li>
+        {% endfor %}
+    </ol>
+    <h1>Add Passenger</h1>
+    <form action="{% url 'book' flight.id %}" method="post">
+        {% csrf_token %}
+        <label for="passenger_id">ID</label> <input type="number" name="passenger_id" placeholder="ID">
+        <label for="sex">Gender</label>
+        <select name="sex">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        <label for="passenger_name">Name</label>
+        <input type="text" name="passenger_name" placeholder="Name">
+        <label for="passenger_age">Age</label>
+        <input type="number" name="passenger_age" placeholder="Age">
+        <input type="submit" value="BOOK">
+    </form>
+
+    <a href="{% url 'index' %}">Flights List</a>
+</body>
+</html>
+           
